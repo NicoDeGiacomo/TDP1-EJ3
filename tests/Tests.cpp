@@ -45,6 +45,19 @@ TEST_CASE("Multiple items") {
     queue.pop();
     CHECK_EQ(queue.top(), "value6");
 }
+
+TEST_CASE("Close") {
+    BlockingQueue<std::string> queue;
+
+    queue.produce("value1");
+    queue.close();
+
+    CHECK_THROWS_AS(queue.produce("value2"), ClosedQueueException);
+    CHECK_EQ(queue.top(), "value1");
+    queue.pop();
+    CHECK_THROWS_AS(queue.top(), ClosedQueueException);
+    CHECK_THROWS_AS(queue.pop(), ClosedQueueException);
+}
 }
 
 TEST_SUITE("Protected HashMap Tests") {
@@ -56,6 +69,14 @@ TEST_CASE("Put and get") {
     map.putIfNotExists("key1", "value1");
     CHECK_NOTHROW(map.get("key1"));
     CHECK_EQ(map.get("key1"), "value1");
+}
+
+TEST_CASE("Empty") {
+    ProtectedHashMap<std::string, std::string> map;
+
+    CHECK(map.empty());
+    map.putIfNotExists("key1", "value1");
+    CHECK(!map.empty());
 }
 
 TEST_CASE("Double put") {
@@ -95,6 +116,7 @@ TEST_CASE("Multiple items") {
 }
 
 TEST_SUITE("QueueManager") {
+
 TEST_CASE("Add and remove queue") {
     QueueManager<std::string> queue_manager;
 

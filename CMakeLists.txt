@@ -8,6 +8,7 @@ include_directories(./common_src)
 include_directories(./client_src)
 include_directories(./server_src)
 include_directories(./tests)
+include_directories(./tests/doctest)
 
 add_executable(CLIENT
         client_src/client_main.cpp client_src/client.cpp client_src/client.h common_src/QueueManager.h common_src/BlockingQueue.h common_src/ProtectedHashMap.h)
