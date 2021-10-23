@@ -1,5 +1,5 @@
-#ifndef BLOCKINGQUEUE_H_
-#define BLOCKINGQUEUE_H_
+#ifndef COMMON_SRC_BLOCKINGQUEUE_H_
+#define COMMON_SRC_BLOCKINGQUEUE_H_
 
 #include <mutex>  // NOLINT [build/c++11]
 #include <condition_variable>  // NOLINT [build/c++11]
@@ -92,4 +92,4 @@ void BlockingQueue<T>::close() {
     closed = true;
 }
 
-#endif  // BLOCKINGQUEUE_H_
+#endif  // COMMON_SRC_BLOCKINGQUEUE_H_

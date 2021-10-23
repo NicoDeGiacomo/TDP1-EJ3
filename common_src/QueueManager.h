@@ -1,5 +1,7 @@
-#ifndef QUEUEMANAGER_H_
-#define QUEUEMANAGER_H_
+#ifndef COMMON_SRC_QUEUEMANAGER_H_
+#define COMMON_SRC_QUEUEMANAGER_H_
+
+#include <string>
 
 #include "BlockingQueue.h"
 #include "ProtectedHashMap.h"
@@ -18,6 +20,7 @@ class QueueManager {
   BlockingQueue<T>* getQueue(std::string name);
 };
 
+/****************** IMPLEMENTATION ******************/
 template<typename T>
 void QueueManager<T>::addQueue(std::string name) {
     std::unique_lock<std::mutex> lock(mutex_);
@@ -46,4 +49,4 @@ QueueManager<T>::~QueueManager() {
     queueMap_.clear();
 }
 
-#endif  // QUEUEMANAGER_H_
+#endif  // COMMON_SRC_QUEUEMANAGER_H_

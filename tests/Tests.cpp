@@ -111,12 +111,10 @@ TEST_CASE("Multiple items") {
     CHECK_EQ(map.get("key4"), "value4");
     CHECK_EQ(map.get("key5"), "value5");
     CHECK_EQ(map.get("key6"), "value6");
-
 }
 }
 
 TEST_SUITE("QueueManager") {
-
 TEST_CASE("Add and remove queue") {
     QueueManager<std::string> queue_manager;
 

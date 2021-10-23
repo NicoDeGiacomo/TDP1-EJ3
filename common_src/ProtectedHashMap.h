@@ -1,7 +1,9 @@
-#ifndef PROTECTEDHASHMAP_H_
-#define PROTECTEDHASHMAP_H_
+#ifndef COMMON_SRC_PROTECTEDHASHMAP_H_
+#define COMMON_SRC_PROTECTEDHASHMAP_H_
 
 #include <unordered_map>
+#include <algorithm>
+#include <utility>
 
 /// Implementation of a Blocking HashMap.
 /// \tparam K Content type for keys.
@@ -62,4 +64,4 @@ void ProtectedHashMap<K, V>::forEach(void func(V)) {
     });
 }
 
-#endif  // PROTECTEDHASHMAP_H_
+#endif  // COMMON_SRC_PROTECTEDHASHMAP_H_
