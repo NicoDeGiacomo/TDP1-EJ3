@@ -6,14 +6,14 @@
 
 class Protocol {
   Socket socket_;
-  void sendChar(char c);
+  void sendChar(char c) const;
 
  public:
   explicit Protocol(Socket socket);
-  void sendCommand(char c);
-  char getCommand();
-  void send_word(const std::string& word);
-  std::string get_word();
+  void sendCommand(char c) const;
+  char getCommand() const;
+  void send_word(const std::string& word) const;
+  std::string get_word() const;
   void shutdown();
 };
 

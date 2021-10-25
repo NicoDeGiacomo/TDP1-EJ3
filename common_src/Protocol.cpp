@@ -8,27 +8,27 @@
 
 Protocol::Protocol(Socket socket) : socket_(std::move(socket)) {}
 
-void Protocol::sendChar(char c) {
+void Protocol::sendChar(char c) const {
     socket_.send(&c, 1);
 }
 
-void Protocol::sendCommand(char c) {
+void Protocol::sendCommand(char c) const {
     sendChar(c);
 }
 
-char Protocol::getCommand() {
+char Protocol::getCommand() const {
     char c;
     socket_.receive(&c, 1);
     return c;
 }
 
-void Protocol::send_word(const std::string& word) {
+void Protocol::send_word(const std::string& word) const {
     sendChar((char) htons(word.size()));
     sendChar((char) (htons(word.size()) >> 8));
     socket_.send(word.c_str(), word.size());
 }
 
-std::string Protocol::get_word() {
+std::string Protocol::get_word() const {
     char buffer[2];
     socket_.receive(&buffer[0], 2);
 

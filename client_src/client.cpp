@@ -10,6 +10,12 @@
 #include "../common_src/Protocol.h"
 #include "../common_src/Socket.h"
 
+std::string read_line_() {
+    std::string c;
+    std::getline(std::cin, c);
+    return c;
+}
+
 std::vector<std::string> parse_command_(const std::string& command) {
     std::vector<std::string> result;
     std::stringstream s(command);
@@ -22,47 +28,62 @@ std::vector<std::string> parse_command_(const std::string& command) {
     return result;
 }
 
+char get_command_char_(std::basic_string<char> const &command) {
+    if (command == COMMAND_DEFINE) {
+        return 'd';
+    }
+    if (command == COMMAND_PUSH) {
+        return 'u';
+    }
+    if (command == COMMAND_POP) {
+        return 'o';
+    }
+    throw std::invalid_argument("Invalid command.");
+}
+
+void execute_command_(Protocol const &protocol,
+                      std::vector<std::string> const &command) {
+    protocol.sendCommand(get_command_char_(command.front()));
+    protocol.send_word(command.at(1));
+
+    if (command.front() == COMMAND_PUSH) {
+        protocol.send_word(command.at(2));
+    }
+    if (command.front() == COMMAND_POP) {
+        std::cout << protocol.get_word() << "\n";
+    }
+}
+
 int run(const char *service, const char *port) {
     Socket socket;
-    socket.connect(port, service);
 
-    Protocol protocol(std::move(socket));  // todo option para no pasar socket
+    try {
+        socket.connect(port, service);
+    } catch (SocketException &e) {
+        syslog(LOG_ERR, "[CLIENT] %s", e.what());
+        closelog();
+        return 2;
+    }
+
+    Protocol protocol(std::move(socket));
 
     while (true) {
-        std::string c;
-        std::getline(std::cin, c);
-
-        // todo validaciones
-        std::vector<std::string> command = parse_command_(c);
+        std::vector<std::string> command = parse_command_(read_line_());
+        if (command.front() == COMMAND_EXIT) {
+            break;
+        }
 
         try {
-            if (command.front() == COMMAND_EXIT) {
-                return EXIT_SUCCESS;
-            }
-
-            if (command.front() == COMMAND_DEFINE) {
-                protocol.sendCommand('d');
-                protocol.send_word(command.at(1));
-                continue;
-            }
-
-            if (command.front() == COMMAND_PUSH) {
-                protocol.sendCommand('u');
-                protocol.send_word(command.at(1));
-                protocol.send_word(command.at(2));
-                continue;
-            }
-
-            if (command.front() == COMMAND_POP) {
-                protocol.sendCommand('o');
-                protocol.send_word(command.at(1));
-                std::cout << protocol.get_word() << "\n";
-                continue;
-            }
-        } catch (SocketException &e) {
-            protocol.shutdown();
+            execute_command_(protocol, command);
+        } catch (std::invalid_argument &e) {
             syslog(LOG_INFO, "[CLIENT] %s", e.what());
-            return EXIT_SUCCESS;
+        } catch (SocketException &e) {
+            syslog(LOG_INFO, "[CLIENT] %s", e.what());
+            break;
         }
     }
+
+    protocol.shutdown();
+    closelog();
+    return EXIT_SUCCESS;
 }
