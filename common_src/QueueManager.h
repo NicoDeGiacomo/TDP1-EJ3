@@ -25,7 +25,9 @@ template<typename T>
 void QueueManager<T>::addQueue(std::string name) {
     std::unique_lock<std::mutex> lock(mutex_);
     auto* queue = new BlockingQueue<T>();
-    queueMap_.putIfNotExists(name, queue);
+    if (!queueMap_.putIfNotExists(name, queue)) {
+        delete queue;
+    }
 }
 
 template<typename T>

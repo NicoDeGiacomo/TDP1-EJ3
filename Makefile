@@ -169,4 +169,4 @@ clean-obj:
 	$(RM) -f $(o_files) $(o-tsan_files)
 
 zip: clean
-	zip -r entrega.zip ./common_src ./server_src ./client_src
+	zip -r entrega.zip ./common_src ./server_src ./client_src ./tests/Tests.cpp

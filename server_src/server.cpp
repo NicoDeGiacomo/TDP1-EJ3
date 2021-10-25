@@ -85,6 +85,7 @@ class AcceptorThread : public Thread {
 
               for (auto i = clients.begin(); i != clients.end();) {
                   if (!(*i)->isRunning()) {
+                      (*i)->stop();
                       (*i)->join();
                       delete (*i);
                       i = clients.erase(i);
@@ -94,14 +95,18 @@ class AcceptorThread : public Thread {
               }
           } catch (ClosedSocketException &e) {
               syslog(LOG_INFO, "[SERVER] %s", e.what());
-              for (auto & client : clients) {
-                  client->stop();
-                  client->join();
-                  delete client;
-              }
-              return;
+              break;
           }
       }
+
+      for (auto & client : clients) {
+          client->stop();
+          client->join();
+          delete client;
+      }
+
+      delete manager;
+      stop();
   }
 
   void stop() {
@@ -116,9 +121,12 @@ int run(const char *port) {
     while (true) {
         int c = std::getchar();
         if (c == COMMAND_EXIT) {
-            acceptor.stop();
-            acceptor.join();
-            return EXIT_SUCCESS;  // todo error codes?
+            break;
         }
     }
+
+    acceptor.stop();
+    acceptor.join();
+    closelog();
+    return EXIT_SUCCESS;
 }

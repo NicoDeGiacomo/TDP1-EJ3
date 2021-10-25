@@ -17,7 +17,7 @@ class ProtectedHashMap {
   ProtectedHashMap() = default;
   virtual ~ProtectedHashMap() = default;
 
-  void putIfNotExists(K key, V const &value);
+  bool putIfNotExists(K key, V const &value);
   V get(K key) const;
   void remove(K key);
   bool empty() const;
@@ -27,11 +27,14 @@ class ProtectedHashMap {
 
 /****************** IMPLEMENTATION ******************/
 template<typename K, typename V>
-void ProtectedHashMap<K, V>::putIfNotExists(const K key, V const &value) {
+bool ProtectedHashMap<K, V>::putIfNotExists(const K key, V const &value) {
     std::unique_lock<std::mutex> lock(mutex_);
     if (!map_.count(key)) {
         map_.emplace(key, value);
+        return true;
     }
+
+    return false;
 }
 
 template<typename K, typename V>
