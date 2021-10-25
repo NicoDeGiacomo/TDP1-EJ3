@@ -41,4 +41,8 @@ std::string Protocol::get_word() {
     return std::move(std::string(word));
 }
 
+void Protocol::shutdown() {
+    socket_.shutdown();
+}
+
 

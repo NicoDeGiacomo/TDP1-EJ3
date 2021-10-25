@@ -99,7 +99,7 @@ unsigned int Socket::send(const char *buffer, unsigned int size) const {
     return sent;
 }
 
-unsigned int Socket::receive(char* buffer, unsigned int size) const {
+void Socket::receive(char* buffer, unsigned int size) const {
     size_t received = 0;
 
     while (received < size) {
@@ -113,24 +113,11 @@ unsigned int Socket::receive(char* buffer, unsigned int size) const {
 
         received += s;
     }
-
-    return received;
-}
-
-Socket::~Socket() {
-    if (fd != -1) {
-        ::shutdown(fd, SHUT_RDWR);
-        close(fd);
-    }
 }
 
 Socket::Socket(Socket&& other) noexcept {
     fd = other.fd;
     other.fd = -1;
-}
-
-Socket::Socket(Socket const &other) noexcept {
-    fd = other.fd;
 }
 
 Socket &Socket::operator=(Socket &&other)  noexcept {
@@ -145,5 +132,10 @@ void Socket::shutdown() {
     if (fd != -1) {
         ::shutdown(fd, SHUT_RDWR);
         close(fd);
+        fd = -1;
     }
+}
+
+Socket::~Socket() {
+    shutdown();
 }

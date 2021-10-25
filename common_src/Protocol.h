@@ -14,6 +14,7 @@ class Protocol {
   char getCommand();
   void send_word(const std::string& word);
   std::string get_word();
+  void shutdown();
 };
 
 #endif  // COMMON_SRC_PROTOCOL_H_

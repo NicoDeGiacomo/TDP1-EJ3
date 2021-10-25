@@ -1,26 +1,27 @@
 #include "server.h"
 
+#include <sys/syslog.h>
 #include <cstdio>
 #include <string>
 #include <atomic>
 #include <list>
+#include <utility>
 
-#include "QueueManager.h"
-#include "Socket.h"
-#include "Protocol.h"
-#include "Thread.h"
+#include "../common_src/QueueManager.h"
+#include "../common_src/Socket.h"
+#include "../common_src/Protocol.h"
+#include "../common_src/Thread.h"
 
 class ClientThread : public Thread {
   std::atomic<bool> keep_talking_;
   std::atomic<bool> is_running_;
-  Socket peer_;
   Protocol protocol_;
   QueueManager<std::string>* manager_;
 
  public:
   explicit ClientThread(Socket peer, QueueManager<std::string> *manager)
-      : keep_talking_(true), is_running_(true), peer_(peer),
-        protocol_(peer), manager_(manager) {}
+      : keep_talking_(true), is_running_(true),
+        protocol_(std::move(peer)), manager_(manager) {}
 
   void run() override {
       try {
@@ -28,17 +29,17 @@ class ClientThread : public Thread {
               char command = protocol_.getCommand();
               std::string queue = protocol_.get_word();
 
-              if (command == 'd') {
+              if (command == COMMAND_DEFINE) {
                   manager_->addQueue(queue);
                   continue;
               }
 
-              if (command == 'u') {
+              if (command == COMMAND_PUSH) {
                   manager_->getQueue(queue)->produce(protocol_.get_word());
                   continue;
               }
 
-              if (command == 'o') {
+              if (command == COMMAND_POP) {
                   std::string word = manager_->getQueue(queue)->top();
                   manager_->getQueue(queue)->pop();
                   protocol_.send_word(word);
@@ -54,7 +55,7 @@ class ClientThread : public Thread {
 
   void stop() {
       keep_talking_ = false;
-      peer_.shutdown();
+      protocol_.shutdown();
   }
 
   bool isRunning() {
@@ -67,19 +68,20 @@ class AcceptorThread : public Thread {
   Socket socket_;
 
  public:
-  explicit AcceptorThread(const char *port) {
+  explicit AcceptorThread(const char *port) : clients() {
       socket_.bind(port);
       socket_.listen(10);
   }
 
   void run() override {
+      auto* manager = new QueueManager<std::string>;
       while (true) {
           try {
               Socket peer = socket_.accept();
-              auto* manager = new QueueManager<std::string>;
-              auto* client_thread = new ClientThread(peer, manager);
+              auto* client = new ClientThread(std::move(peer), manager);
+              client->start();
 
-              clients.push_back(client_thread);
+              clients.push_back(client);
 
               for (auto i = clients.begin(); i != clients.end();) {
                   if (!(*i)->isRunning()) {
@@ -91,10 +93,11 @@ class AcceptorThread : public Thread {
                   }
               }
           } catch (ClosedSocketException &e) {
-              for (auto i = clients.begin(); i != clients.end();) {
-                  (*i)->stop();
-                  (*i)->join();
-                  delete (*i);
+              syslog(LOG_INFO, "[SERVER] %s", e.what());
+              for (auto & client : clients) {
+                  client->stop();
+                  client->join();
+                  delete client;
               }
               return;
           }
@@ -112,8 +115,9 @@ int run(const char *port) {
 
     while (true) {
         int c = std::getchar();
-        if (c == 'q') {
+        if (c == COMMAND_EXIT) {
             acceptor.stop();
+            acceptor.join();
             return EXIT_SUCCESS;  // todo error codes?
         }
     }

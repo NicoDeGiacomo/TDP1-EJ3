@@ -18,3 +18,8 @@ add_executable(SERVER
 
 add_executable(TESTS
         tests/Tests.cpp common_src/BlockingQueue.h common_src/ProtectedHashMap.h)
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(CLIENT Threads::Threads)
+target_link_libraries(SERVER Threads::Threads)
