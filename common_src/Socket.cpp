@@ -16,17 +16,14 @@ struct addrinfo *Socket::get_addresses(const char *port, const char *ip) {
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = (ip == nullptr) ? AI_PASSIVE : 0;
-
-    if (getaddrinfo(ip, port, &hints, &addresses) != 0) return nullptr;
+    if (getaddrinfo(ip, port, &hints, &addresses) != 0) {
+        throw SocketException("Failed getting address information.");
+    }
     return addresses;
 }
 
-int Socket::bind(const char *port) {
-    struct addrinfo* addresses;
-    if ((addresses = get_addresses(port, nullptr)) == nullptr) {
-        return -1;
-    }
-
+void Socket::bind(const char *port) {
+    struct addrinfo* addresses = get_addresses(port, nullptr);
     int val = 1;
     for (struct addrinfo* i = addresses; i != nullptr; i = i->ai_next) {
         int skt = socket(i->ai_family, i->ai_socktype, i->ai_protocol);
@@ -42,11 +39,16 @@ int Socket::bind(const char *port) {
         }
     }
     freeaddrinfo(addresses);
-    return fd == -1;
+
+    if (fd == -1) {
+        throw SocketException("Failed to bind Socket.");
+    }
 }
 
-int Socket::listen(int size) const {
-    return (::listen(fd, size) == -1);
+void Socket::listen(int size) const {
+    if (::listen(fd, size) == -1) {
+        throw SocketException("Failed to listen.");
+    }
 }
 
 Socket Socket::accept() const {
@@ -58,10 +60,7 @@ Socket Socket::accept() const {
 }
 
 void Socket::connect(const char* port, const char* name) {
-    struct addrinfo* addresses;
-    if ((addresses = get_addresses(port, name)) == nullptr)
-        throw std::invalid_argument("Error connecting to server");
-
+    struct addrinfo* addresses = get_addresses(port, name);
     struct addrinfo* a;
     for (a = addresses; a != nullptr; a = a->ai_next) {
         int skt = ::socket(a->ai_family, a->ai_socktype, a->ai_protocol);
@@ -81,9 +80,8 @@ void Socket::connect(const char* port, const char* name) {
     freeaddrinfo(addresses);
 }
 
-unsigned int Socket::send(const char *buffer, unsigned int size) const {
+void Socket::send(const char *buffer, unsigned int size) const {
     size_t sent = 0;
-
     while (sent < size) {
         ssize_t s = ::send(fd, &buffer[sent], size - sent, MSG_NOSIGNAL);
         if (s == -1) {
@@ -92,16 +90,12 @@ unsigned int Socket::send(const char *buffer, unsigned int size) const {
         if (s == 0) {
             throw ClosedSocketException();
         }
-
         sent += s;
     }
-
-    return sent;
 }
 
 void Socket::receive(char* buffer, unsigned int size) const {
     size_t received = 0;
-
     while (received < size) {
         ssize_t s = ::recv(fd, &buffer[received], size - received, 0);
         if (s == -1) {
@@ -110,7 +104,6 @@ void Socket::receive(char* buffer, unsigned int size) const {
         if (s == 0) {
             throw ClosedSocketException();
         }
-
         received += s;
     }
 }

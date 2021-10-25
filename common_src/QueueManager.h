@@ -2,21 +2,36 @@
 #define COMMON_SRC_QUEUEMANAGER_H_
 
 #include <string>
-
 #include "BlockingQueue.h"
 #include "ProtectedHashMap.h"
 
+/// Implementation (thread-safe) of a HashMap of BlockingQueues.
+/// \tparam T Type of the elements contained in the BlockingQueues.
 template <typename T>
 class QueueManager {
   std::mutex mutex_;
   ProtectedHashMap<std::string, BlockingQueue<T> *> queueMap_;
 
  public:
+  /// Creates the manager.
   QueueManager() = default;
+
+  /// Destroys the manager.
   virtual ~QueueManager();
 
+  /// Adds a Queue associated with a Key,
+  /// if it doesnt already exist in the Manager.
+  /// \param name Key to add.
   void addQueue(std::string name);
+
+  /// Removes the Queue associated with the Key.
+  /// \param name Key to remove.
   void removeQueue(std::string name);
+
+  /// Returns the Queue associated with the Key.
+  /// \param name Key to retrieve.
+  /// \return A BlockingQueue.
+  /// \throw Exceptions thrown by the ProtectedHashMap.
   BlockingQueue<T>* getQueue(std::string name);
 };
 
@@ -40,7 +55,6 @@ void QueueManager<T>::removeQueue(std::string name) {
 
 template<typename T>
 BlockingQueue<T>* QueueManager<T>::getQueue(std::string name) {
-    std::unique_lock<std::mutex> lock(mutex_);
     return queueMap_.get(name);
 }
 template<typename T>
