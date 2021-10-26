@@ -74,9 +74,6 @@ void BlockingQueue<T>::close();
 El método `close` cierra la cola.\
 Cuando entra en este estado, una cola dejará de aceptar nuevos elementos y **luego de vaciarse** tampoco aceptará nuevos consumos.
 
-#### 2.1.3 Diagrama De Utilización
-![](assets/queue.svg)
-
 ### 2.2. TDA: ProtectedHashMap
 #### 2.2.1 Introducción
 Este TDA representa un HashMap protegido, de manera de que se pueda utilizar de una forma `thread-safe`.
@@ -106,9 +103,6 @@ void ProtectedHashMap<K, V>::forEach(void func(V));
 Este método aplica una función (que recibe por parámetro) a cada uno de los valores guardados en el mapa, de forma secuencial.
 La función recibida debe tener una firma acorde: retornar `void` y recibir un solo parámetro del tipo configurado a través de `typename V`.
 
-### 2.2.3 Diagrama De Utilización
-![](assets/hashmap.svg)
-
 ### 2.3. TDA: Protocol
 #### 2.3.1 Introducción
 Este TDA encapsula el protocolo de comunicación entre el servidor y los clientes.\
@@ -137,9 +131,6 @@ std::string Protocol::get_word() const;
 ```
 Estos métodos envían o reciben una palabra.
 Este envío o recepción se realiza en dos partes: primero se envía/recibe el largo de la palabra en **2 bytes**, y luego se envía/recibe la palabra en cuestíón.
-
-#### 2.3.3 Diagrama De Utilización
-![](assets/protocol.svg)
 
 ### 2.4. TDA: Socket
 #### 2.4.1 Introducción
