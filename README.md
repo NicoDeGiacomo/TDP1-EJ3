@@ -145,7 +145,7 @@ void Socket::listen(int size) const;
 Socket Socket::accept() const;
 ```
 Estos métodos se utilizan al momento de crear un servidor. Los primeros dos, crea un Socket en el puerto deseado y lo establece en modo _listen_ con una cola de espera de conexiones.\
-El tercer método, acepta un cliente de la mencionada cola de conexiones y retorna nu **nuevo** Socket que permitirá la comunicación con el cliente.
+El tercer método, acepta un cliente de la mencionada cola de conexiones y retorna un **nuevo** Socket que permitirá la comunicación con el cliente.
 
 ```c++
 void Socket::connect(const char* port, const char* name);
@@ -190,10 +190,10 @@ Finalmente, los módulos Client y Server utilizan los TDA mencionados anteriorme
 
 El módulo Client lee comandos ingresados por el usuario por la entrada estándar y envía las acciones necesarias al servidor.
 Los comandos que utiliza son los siguientes:
-- define <queue>: Define una nueva Queue.
-- push <queue> <message>: Agrega un mensaje a una Queue. 
-- pop <queue>: Extrae un mensaje de una Queue.
-- exit: Termina la ejecución del módulo.
+- _define_ <queue>: Define una nueva Queue.
+- _push_ <queue> <message>: Agrega un mensaje a una Queue. 
+- _pop_ <queue>: Extrae un mensaje de una Queue.
+- _exit_: Termina la ejecución del módulo.
 
 El módulo Server contiene todas las Queues utilizadas por los clientes e intercambia información con los mismos. También lee de la entrada estándar, por la cual puede recibir un único parámetro: `q`.
 Este parámetro detiene la ejecución del servidor.
