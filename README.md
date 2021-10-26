@@ -22,7 +22,7 @@ Nicolás De Giácomo\
         * [2.5.1. Introducción](#251-introducción)
         * [2.5.2. Funciones Principales](#252-funciones-principales)
         * [2.5.3. Diagrama de Utilización](#253-diagrama-de-utilización)
-    * [2.6. Módulos: Client y Server](#26-mdulos-client-y-server)
+    * [2.6. Módulos: Client y Server](#26-módulos-client-y-server)
         * [2.6.1. Introducción](#261-introducción)
         * [2.6.2. Funciones Principales](#262-funciones-principales)
 * [3. Esquema Final](#3-esquema-final)
