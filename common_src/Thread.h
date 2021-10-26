@@ -7,6 +7,9 @@
 class Thread {
   std::thread thread_;
 
+  /// Function to run_ on the Thread.
+  virtual void run_() = 0;
+
  public:
   /// Creates the Thread.
   Thread() = default;
@@ -19,9 +22,6 @@ class Thread {
 
   /// Join the Thread.
   void join();
-
-  /// Function to run on the Thread.
-  virtual void run() = 0;
 };
 
 #endif  // COMMON_SRC_THREAD_H_

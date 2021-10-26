@@ -27,15 +27,13 @@ void Socket::bind(const char *port) {
     int val = 1;
     for (struct addrinfo* i = addresses; i != nullptr; i = i->ai_next) {
         int skt = socket(i->ai_family, i->ai_socktype, i->ai_protocol);
-        setsockopt(skt, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val));
-        if (skt == -1) {
-            continue;
-        } else if (::bind(skt, i->ai_addr, i->ai_addrlen) == -1) {
+        ::setsockopt(skt, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val));
+        if (skt != -1) {
+            if (::bind(skt, i->ai_addr, i->ai_addrlen) != -1) {
+                fd = skt;
+                break;
+            }
             close(skt);
-            continue;
-        } else {
-            fd = skt;
-            break;
         }
     }
     freeaddrinfo(addresses);
@@ -72,12 +70,11 @@ void Socket::connect(const char* port, const char* name) {
             close(skt);
         }
     }
+    freeaddrinfo(addresses);
 
     if (a == nullptr) {
         throw SocketException("Error connecting to server.");
     }
-
-    freeaddrinfo(addresses);
 }
 
 void Socket::send(const char *buffer, unsigned int size) const {

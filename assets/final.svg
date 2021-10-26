@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="489px" preserveAspectRatio="none" style="width:543px;height:489px;background:#FFFFFF;" version="1.1" viewBox="0 0 543 489" width="543px" zoomAndPan="magnify"><defs><filter height="300%" id="fsvqmh50d17oo" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[406b65fecc21e832f7a9b6ebadc6dce1]
+cluster Client--><polygon fill="#FFFFFF" filter="url(#fsvqmh50d17oo)" points="39,6,92,6,99,28.2969,133,28.2969,133,207,39,207,39,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="39" x2="99" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="47" x="43" y="20.9951">Client</text><!--MD5=[979da56a7f83e2393dc758167ae295d0]
+cluster Server--><polygon fill="#FFFFFF" filter="url(#fsvqmh50d17oo)" points="177,6,234,6,241,28.2969,526,28.2969,526,207,177,207,177,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="177" x2="241" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="51" x="181" y="20.9951">Server</text><!--MD5=[54bb6d7a037149ef75f792f06aa0aa50]
+cluster Common--><polygon fill="#FFFFFF" filter="url(#fsvqmh50d17oo)" points="16,231,92,231,99,253.2969,413,253.2969,413,482,16,482,16,231" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="99" y1="253.2969" y2="253.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="70" x="20" y="245.9951">Common</text><!--MD5=[7dedd1187c1229a22dc83285e1d952ac]
+class Client.main--><rect codeLine="2" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="44.7734" id="Client.main" style="stroke:#A80036;stroke-width:1.5;" width="62" x="55" y="41"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="72" y="57.1387">main</text><line style="stroke:#A80036;stroke-width:1.5;" x1="56" x2="116" y1="64.9688" y2="64.9688"/><ellipse cx="66" cy="75.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="75" y="79.1792">main()</text><!--MD5=[23848f86f57e3576b0adbcf7b1caef14]
+class Client.client--><rect codeLine="5" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="44.7734" id="Client.client" style="stroke:#A80036;stroke-width:1.5;" width="52" x="60" y="146"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="70" y="162.1387">client</text><line style="stroke:#A80036;stroke-width:1.5;" x1="61" x2="111" y1="169.9688" y2="169.9688"/><ellipse cx="71" cy="180.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="80" y="184.1792">run()</text><!--MD5=[2224fc994dbf8a3448d7042d1c6cc712]
+class Server.main--><rect codeLine="11" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="44.7734" id="Server.main" style="stroke:#A80036;stroke-width:1.5;" width="62" x="193" y="41"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="210" y="57.1387">main</text><line style="stroke:#A80036;stroke-width:1.5;" x1="194" x2="254" y1="64.9688" y2="64.9688"/><ellipse cx="204" cy="75.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="213" y="79.1792">main()</text><!--MD5=[af3f1b4cf9765bb4be0372d48c77fa76]
+class Server.server--><rect codeLine="14" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="44.7734" id="Server.server" style="stroke:#A80036;stroke-width:1.5;" width="52" x="198" y="146"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="40" x="204" y="162.1387">server</text><line style="stroke:#A80036;stroke-width:1.5;" x1="199" x2="249" y1="169.9688" y2="169.9688"/><ellipse cx="209" cy="180.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="218" y="184.1792">run()</text><!--MD5=[0af2ea0eea2c747cee1609987da3c7e3]
+class ClientThread--><rect codeLine="18" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="23.9688" id="ClientThread" style="stroke:#A80036;stroke-width:1.5;" width="81" x="290.5" y="51.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="75" x="293.5" y="67.6387">ClientThread</text><!--MD5=[b87b59af1bd1607d0f36d9e2cd917034]
+class AcceptorThread--><rect codeLine="22" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="23.9688" id="AcceptorThread" style="stroke:#A80036;stroke-width:1.5;" width="103" x="406.5" y="51.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="97" x="409.5" y="67.6387">AcceptorThread</text><!--MD5=[10c8066ce5c6dabe6ea36d69e6deeabd]
+class BlockingQueue--><rect codeLine="28" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="70.3828" id="BlockingQueue" style="stroke:#A80036;stroke-width:1.5;" width="97" x="299.5" y="396"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="91" x="302.5" y="412.1387">BlockingQueue</text><line style="stroke:#A80036;stroke-width:1.5;" x1="300.5" x2="395.5" y1="419.9688" y2="419.9688"/><ellipse cx="310.5" cy="430.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="54" x="319.5" y="434.1792">produce()</text><ellipse cx="310.5" cy="443.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="319.5" y="446.9839">top()</text><ellipse cx="310.5" cy="456.5781" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="29" x="319.5" y="459.7886">pop()</text><!--MD5=[c16038d5703e4db6ee20a92c271a29de]
+class ProtectedHashMap--><rect codeLine="34" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="57.5781" id="ProtectedHashMap" style="stroke:#A80036;stroke-width:1.5;" width="119" x="145.5" y="402"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="113" x="148.5" y="418.1387">ProtectedHashMap</text><line style="stroke:#A80036;stroke-width:1.5;" x1="146.5" x2="263.5" y1="425.9688" y2="425.9688"/><ellipse cx="156.5" cy="436.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="165.5" y="440.1792">putIfNotExists()</text><ellipse cx="156.5" cy="449.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27" x="165.5" y="452.9839">get()</text><!--MD5=[a0c27cfb527bdb20a6436baa93834728]
+class Protocol--><rect codeLine="39" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="57.5781" id="Protocol" style="stroke:#A80036;stroke-width:1.5;" width="107" x="32.5" y="272"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="49" x="61.5" y="288.1387">Protocol</text><line style="stroke:#A80036;stroke-width:1.5;" x1="33.5" x2="138.5" y1="295.9688" y2="295.9688"/><ellipse cx="43.5" cy="306.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="52.5" y="310.1792">sendWord()</text><ellipse cx="43.5" cy="319.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="81" x="52.5" y="322.9839">receiveWord()</text><!--MD5=[8f07f51d887e64eddc161f608ee0ddb0]
+class Socket--><rect codeLine="44" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="57.5781" id="Socket" style="stroke:#A80036;stroke-width:1.5;" width="78" x="32" y="402"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="50" y="418.1387">Socket</text><line style="stroke:#A80036;stroke-width:1.5;" x1="33" x2="109" y1="425.9688" y2="425.9688"/><ellipse cx="43" cy="436.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="52" y="440.1792">send()</text><ellipse cx="43" cy="449.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="52" y="452.9839">receive()</text><!--MD5=[2b6c9f406b67bab82b08343df7852e1c]
+class QueueManager--><rect codeLine="49" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="57.5781" id="QueueManager" style="stroke:#A80036;stroke-width:1.5;" width="98" x="175" y="272"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="92" x="178" y="288.1387">QueueManager</text><line style="stroke:#A80036;stroke-width:1.5;" x1="176" x2="272" y1="295.9688" y2="295.9688"/><ellipse cx="186" cy="306.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="195" y="310.1792">addQueue()</text><ellipse cx="186" cy="319.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="66" x="195" y="322.9839">getQueue()</text><!--MD5=[948346f2dfe9866ea883595a582714fa]
+class Thread--><rect codeLine="54" fill="#FEFECE" filter="url(#fsvqmh50d17oo)" height="70.3828" id="Thread" style="stroke:#A80036;stroke-width:1.5;" width="59" x="308.5" y="266"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="317" y="282.1387">Thread</text><line style="stroke:#A80036;stroke-width:1.5;" x1="309.5" x2="366.5" y1="289.9688" y2="289.9688"/><ellipse cx="319.5" cy="300.9688" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="33" x="328.5" y="304.1792">start()</text><ellipse cx="319.5" cy="313.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="28" x="328.5" y="316.9839">join()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="316.5" y="323.5781"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="328.5" y="329.7886">run()</text><!--MD5=[feeb7f6d63508ac3d1b116e50f721cee]
+link Client.main to Client.client--><path codeLine="64" d="M86,86.344 C86,102.184 86,123.704 86,140.603 " fill="none" id="Client.main-to-Client.client" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="86,145.688,90,136.688,86,140.688,82,136.688,86,145.688" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6d8097fe63c660cba72797b4dbf615f2]
+link Client.client to Protocol--><path codeLine="65" d="M86,191.049 C86,211.51 86,242.58 86,266.312 " fill="none" id="Client.client-to-Protocol" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="86,271.563,90,262.563,86,266.563,82,262.563,86,271.563" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b482b4c97ca6eea246b446ecf6cfea20]
+link Server.main to Server.server--><path codeLine="67" d="M224,86.344 C224,102.184 224,123.704 224,140.603 " fill="none" id="Server.main-to-Server.server" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="224,145.688,228,136.688,224,140.688,220,136.688,224,145.688" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[dacb5f0afe5dc36f0c14671f81955050]
+link Server.server to QueueManager--><path codeLine="68" d="M224,191.049 C224,211.51 224,242.58 224,266.312 " fill="none" id="Server.server-to-QueueManager" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="224,271.563,228,262.563,224,266.563,220,262.563,224,271.563" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e98d8bfa6270f0194e6d9d79144a1b34]
+link Server.server to Protocol--><path codeLine="69" d="M197.787,188.942 C185.093,198.727 169.853,211.029 157,223 C141.918,237.047 126.273,253.749 113.52,268.002 " fill="none" id="Server.server-to-Protocol" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="110.003,271.953,118.9749,267.8904,113.3276,268.2184,112.9995,262.5711,110.003,271.953" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ade2d73edc6c495d09e1dddfa19413d0]
+link Server.server to Thread--><path codeLine="70" d="M250.168,187.523 C263.048,197.15 278.282,209.734 290,223 C300.213,234.562 309.636,248.546 317.38,261.407 " fill="none" id="Server.server-to-Thread" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="319.94,265.72,318.785,255.9391,317.3875,261.4206,311.906,260.0231,319.94,265.72" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[875d80c0aaed6f67c91a2eb2985b2936]
+reverse link Thread to ClientThread--><path codeLine="71" d="M336.393,245.926 C334.718,189.595 332.217,105.458 331.328,75.543 " fill="none" id="Thread-backto-ClientThread" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="343.391,245.784,336.989,265.983,329.398,246.2,343.391,245.784" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f4a3a21fd059ff72bde4b1c5071ab468]
+reverse link Thread to AcceptorThread--><path codeLine="72" d="M364.423,248.145 C393.119,191.829 436.928,105.854 452.373,75.543 " fill="none" id="Thread-backto-AcceptorThread" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="370.651,251.341,355.333,265.983,358.177,244.985,370.651,251.341" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[45d4e41cde97ec855606264f755affd0]
+link Protocol to Socket--><path codeLine="74" d="M82.7082,330.09 C80.4026,349.764 77.3126,376.133 74.8859,396.84 " fill="none" id="Protocol-to-Socket" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="74.2841,401.9754,79.3036,393.5016,74.8655,397.0093,71.3578,392.5713,74.2841,401.9754" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[741dbb6c692ff01a0555fc889e8e5d5e]
+link QueueManager to ProtectedHashMap--><path codeLine="75" d="M219.83,330.09 C216.91,349.764 212.996,376.133 209.922,396.84 " fill="none" id="QueueManager-to-ProtectedHashMap" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="209.16,401.9754,214.4384,393.6604,209.8943,397.0296,206.5251,392.4855,209.16,401.9754" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2205c9f2a741a86b790431da612f4698]
+link QueueManager to BlockingQueue--><path codeLine="76" d="M251.212,330.09 C268.723,348.166 291.708,371.893 310.885,391.688 " fill="none" id="QueueManager-to-BlockingQueue" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="314.667,395.592,311.2786,386.3444,311.1883,392.0005,305.5322,391.9102,314.667,395.592" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[860749ebc7f7aaa419ad7234ee5688e6]
+@startuml
+package Client {
+class Client.main {
++main()
+}
+class Client.client {
++run()
+}
+}
+
+package Server {
+class Server.main {
++main()
+}
+class Server.server {
++run()
+}
+
+class ClientThread {
+-run()
+}
+
+class AcceptorThread {
+-run()
+}
+}
+
+package Common {
+class BlockingQueue {
++produce()
++top()
++pop()
+}
+
+class ProtectedHashMap {
++putIfNotExists()
++get()
+}
+
+class Protocol {
++sendWord()
++receiveWord()
+}
+
+class Socket {
++send()
++receive()
+}
+
+class QueueManager {
++addQueue()
++getQueue()
+}
+
+class Thread {
++start()
++join()
+-run()
+}
+}
+
+
+
+
+Client.main ..> Client.client
+Client.client ..> Protocol
+
+Server.main ..> Server.server
+Server.server ..> QueueManager
+Server.server ..> Protocol
+Server.server ..> Thread
+Thread <|- - ClientThread
+Thread <|- - AcceptorThread
+
+Protocol ..> Socket
+QueueManager ..> ProtectedHashMap
+QueueManager ..> BlockingQueue
+
+hide circle
+hide fields
+hide ClientThread methods
+hide AcceptorThread methods
+@enduml
+
+PlantUML version 1.2021.13beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

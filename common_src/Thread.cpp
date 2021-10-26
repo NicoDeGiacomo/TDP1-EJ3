@@ -1,7 +1,7 @@
 #include "Thread.h"
 
 void Thread::start() {
-    thread_ = std::thread(&Thread::run, this);
+    thread_ = std::thread(&Thread::run_, this);
 }
 
 void Thread::join() {

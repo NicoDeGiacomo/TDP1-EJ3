@@ -18,12 +18,7 @@ class ClientThread : public Thread {
   Protocol protocol_;
   QueueManager<std::string>* manager_;
 
- public:
-  explicit ClientThread(Socket peer, QueueManager<std::string> *manager)
-      : keep_talking_(true), is_running_(true),
-        protocol_(std::move(peer)), manager_(manager) {}
-
-  void run() override {
+  void run_() override {
       try {
           while (keep_talking_) {
               char command = protocol_.getCommand();
@@ -32,11 +27,9 @@ class ClientThread : public Thread {
               if (command == COMMAND_DEFINE) {
                   manager_->addQueue(queue);
               }
-
               if (command == COMMAND_PUSH) {
                   manager_->getQueue(queue)->produce(protocol_.get_word());
               }
-
               if (command == COMMAND_POP) {
                   std::string word = manager_->getQueue(queue)->top();
                   manager_->getQueue(queue)->pop();
@@ -49,6 +42,11 @@ class ClientThread : public Thread {
           return;
       }
   }
+
+ public:
+  explicit ClientThread(Socket peer, QueueManager<std::string> *manager)
+      : keep_talking_(true), is_running_(true),
+        protocol_(std::move(peer)), manager_(manager) {}
 
   void stop() {
       keep_talking_ = false;
@@ -93,18 +91,7 @@ class AcceptorThread : public Thread {
       }
   }
 
- public:
-  explicit AcceptorThread(const char *port) : clients_() {
-      socket_.bind(port);
-      socket_.listen(10);
-  }
-
-  ~AcceptorThread() override {
-      stop();
-      stop_clients_();
-  }
-
-  void run() override {
+  void run_() override {
       auto* manager = new QueueManager<std::string>;
       while (true) {
           try {
@@ -117,6 +104,17 @@ class AcceptorThread : public Thread {
       }
       stop_clients_();
       delete manager;
+  }
+
+ public:
+  explicit AcceptorThread(const char *port) : clients_() {
+      socket_.bind(port);
+      socket_.listen(10);
+  }
+
+  ~AcceptorThread() override {
+      stop();
+      stop_clients_();
   }
 
   void stop() {

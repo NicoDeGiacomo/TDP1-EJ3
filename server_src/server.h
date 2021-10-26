@@ -8,7 +8,7 @@
 
 /// Starts the server module for the middleware with the
 /// desired configuration.
-/// \param port Port where to run the server.
+/// \param port Port where to run_ the server.
 /// \return Returns 1 if the parameters where invalid,
 /// 2 if there was an error, 0 otherwise.
 int run(const char* port);
