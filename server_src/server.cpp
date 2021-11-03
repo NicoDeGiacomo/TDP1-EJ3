@@ -94,10 +94,10 @@ class AcceptorThread : public Thread {
   }
 
   void run_() override {
-      auto* manager = new QueueManager<std::string>;
+      QueueManager<std::string> manager;
       while (true) {
           try {
-              accept_client_(manager);
+              accept_client_(&manager);
               clean_clients_();
           } catch (ClosedSocketException &e) {
               syslog(LOG_INFO, "[SERVER] %s", e.what());
@@ -105,7 +105,6 @@ class AcceptorThread : public Thread {
           }
       }
       stop_clients_();
-      delete manager;
   }
 
  public:
