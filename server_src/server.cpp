@@ -40,7 +40,7 @@ class ClientThread : public Thread {
       } catch (ClosedSocketException &e) {
           is_running_ = false;
           return;
-      }
+      } catch (std::out_of_range &e) {}
   }
 
  public:
@@ -78,16 +78,17 @@ class AcceptorThread : public Thread {
               delete (*i);
               i = clients_.erase(i);
           } else {
-              i++;
+              ++i;
           }
       }
   }
 
   void stop_clients_() {
-      for (auto & client : clients_) {
-          client->stop();
-          client->join();
-          delete client;
+      for (auto i = clients_.begin(); i != clients_.end();) {
+          (*i)->stop();
+          (*i)->join();
+          delete (*i);
+          i = clients_.erase(i);
       }
   }
 
