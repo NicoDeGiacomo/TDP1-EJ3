@@ -27,6 +27,7 @@ Nicolás De Giácomo\
         * [2.6.2. Funciones Principales](#262-funciones-principales)
 * [3. Esquema Final](#3-esquema-final)
 * [4. Recursos](#4-recursos)
+* [5. Correcciones](#5-correcciones)
 
 ## 1. Introducción
 En este proyecto se diseña una versión simplificada de un middleware, más específicamente un MOM (Message Oriented Middleware).\
@@ -229,3 +230,16 @@ Para el desarrollo de este proyecto se utilizaron los siguientes recursos.
     - [Valgrind](https://www.valgrind.org/)
     - [ByExamples](https://byexamples.github.io/)
     - [Doctest](https://github.com/onqtam/doctest)
+
+## 5. Correcciones
+
+Luego de la revisión, se corrigieron los siguientes issues.
+- [#4 Re-ordenado de archivos](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/4)
+- [#6 Uso del Stack](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/6)
+- [#7 Doble delete](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/7)
+- [#8 Uso de std:vector](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/8)
+- [#9 Uso de _++i_](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/9)
+- [#10 Avoid server crash](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/10)
+- [#12 Pasar strings por referencia](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/12)
+- [#14 Uso de lock_guard](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/14)
+- [#15 Reentrega](https://github.com/NicoDeGiacomo/TDP1-EJ3/issues/15)
