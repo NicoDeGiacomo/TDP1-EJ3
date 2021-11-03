@@ -6,11 +6,12 @@
 #include <atomic>
 #include <list>
 #include <utility>
+#include <vector>
 
-#include "../common_src/QueueManager.h"
+#include "QueueManager.h"
 #include "../common_src/Socket.h"
 #include "../common_src/Protocol.h"
-#include "../common_src/Thread.h"
+#include "Thread.h"
 
 class ClientThread : public Thread {
   std::atomic<bool> keep_talking_;
@@ -60,7 +61,7 @@ class ClientThread : public Thread {
 
 class AcceptorThread : public Thread {
  private:
-  std::list<ClientThread*> clients_;
+  std::vector<ClientThread*> clients_;
   Socket socket_;
 
   void accept_client_(QueueManager<std::string> *manager) {

@@ -1,5 +1,5 @@
-#ifndef COMMON_SRC_PROTECTEDHASHMAP_H_
-#define COMMON_SRC_PROTECTEDHASHMAP_H_
+#ifndef SERVER_SRC_PROTECTEDHASHMAP_H_
+#define SERVER_SRC_PROTECTEDHASHMAP_H_
 
 #include <mutex>  // NOLINT [build/c++11]
 #include <unordered_map>
@@ -53,7 +53,7 @@ class ProtectedHashMap {
 /****************** IMPLEMENTATION ******************/
 template<typename K, typename V>
 bool ProtectedHashMap<K, V>::putIfNotExists(const K key, V const &value) {
-    std::unique_lock<std::mutex> lock(mutex_);
+    std::lock_guard<std::mutex> lock(mutex_);
     if (!map_.count(key)) {
         map_.emplace(key, value);
         return true;
@@ -69,7 +69,7 @@ V ProtectedHashMap<K, V>::get(const K key) const {
 
 template<typename K, typename V>
 void ProtectedHashMap<K, V>::remove(K key) {
-    std::unique_lock<std::mutex> lock(mutex_);
+    std::lock_guard<std::mutex> lock(mutex_);
     map_.erase(key);
 }
 
@@ -80,16 +80,16 @@ bool ProtectedHashMap<K, V>::empty() const {
 
 template<typename K, typename V>
 void ProtectedHashMap<K, V>::clear() {
-    std::unique_lock<std::mutex> lock(mutex_);
+    std::lock_guard<std::mutex> lock(mutex_);
     map_.clear();
 }
 
 template<typename K, typename V>
 void ProtectedHashMap<K, V>::forEach(void func(V)) {
-    std::unique_lock<std::mutex> lock(mutex_);
+    std::lock_guard<std::mutex> lock(mutex_);
     std::for_each(map_.begin(), map_.end(), [&func](std::pair<K, V> pair) {
       func(pair.second);
     });
 }
 
-#endif  // COMMON_SRC_PROTECTEDHASHMAP_H_
+#endif  // SERVER_SRC_PROTECTEDHASHMAP_H_

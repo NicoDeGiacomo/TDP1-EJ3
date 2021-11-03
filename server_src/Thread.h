@@ -1,5 +1,5 @@
-#ifndef COMMON_SRC_THREAD_H_
-#define COMMON_SRC_THREAD_H_
+#ifndef SERVER_SRC_THREAD_H_
+#define SERVER_SRC_THREAD_H_
 
 #include <thread>  // NOLINT [build/c++11]
 
@@ -24,4 +24,4 @@ class Thread {
   void join();
 };
 
-#endif  // COMMON_SRC_THREAD_H_
+#endif  // SERVER_SRC_THREAD_H_

@@ -11,13 +11,13 @@ include_directories(./tests)
 include_directories(./tests/doctest)
 
 add_executable(CLIENT
-        client_src/client_main.cpp client_src/client.cpp client_src/client.h common_src/QueueManager.h common_src/BlockingQueue.h common_src/ProtectedHashMap.h common_src/Socket.cpp common_src/Socket.h common_src/Protocol.cpp common_src/Protocol.h common_src/Thread.cpp common_src/Thread.h)
+        client_src/client_main.cpp client_src/client.cpp client_src/client.h server_src/QueueManager.h server_src/BlockingQueue.h server_src/ProtectedHashMap.h common_src/Socket.cpp common_src/Socket.h common_src/Protocol.cpp common_src/Protocol.h server_src/Thread.cpp server_src/Thread.h)
 
 add_executable(SERVER
-        server_src/server_main.cpp server_src/server.cpp server_src/server.h common_src/QueueManager.h common_src/BlockingQueue.h common_src/ProtectedHashMap.h common_src/Socket.cpp common_src/Socket.h common_src/Protocol.cpp common_src/Protocol.h common_src/Thread.cpp common_src/Thread.h)
+        server_src/server_main.cpp server_src/server.cpp server_src/server.h server_src/QueueManager.h server_src/BlockingQueue.h server_src/ProtectedHashMap.h common_src/Socket.cpp common_src/Socket.h common_src/Protocol.cpp common_src/Protocol.h server_src/Thread.cpp server_src/Thread.h)
 
 add_executable(TESTS
-        tests/Tests.cpp common_src/BlockingQueue.h common_src/ProtectedHashMap.h)
+        tests/Tests.cpp server_src/BlockingQueue.h server_src/ProtectedHashMap.h)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

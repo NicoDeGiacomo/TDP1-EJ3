@@ -1,5 +1,5 @@
-#ifndef COMMON_SRC_QUEUEMANAGER_H_
-#define COMMON_SRC_QUEUEMANAGER_H_
+#ifndef SERVER_SRC_QUEUEMANAGER_H_
+#define SERVER_SRC_QUEUEMANAGER_H_
 
 #include <string>
 #include "BlockingQueue.h"
@@ -22,22 +22,22 @@ class QueueManager {
   /// Adds a Queue associated with a Key,
   /// if it doesnt already exist in the Manager.
   /// \param name Key to add.
-  void addQueue(std::string name);
+  void addQueue(const std::string& name);
 
   /// Removes the Queue associated with the Key.
   /// \param name Key to remove.
-  void removeQueue(std::string name);
+  void removeQueue(const std::string& name);
 
   /// Returns the Queue associated with the Key.
   /// \param name Key to retrieve.
   /// \return A BlockingQueue.
   /// \throw Exceptions thrown by the ProtectedHashMap.
-  BlockingQueue<T>* getQueue(std::string name);
+  BlockingQueue<T>* getQueue(const std::string& name);
 };
 
 /****************** IMPLEMENTATION ******************/
 template<typename T>
-void QueueManager<T>::addQueue(std::string name) {
+void QueueManager<T>::addQueue(const std::string& name) {
     std::unique_lock<std::mutex> lock(mutex_);
     auto* queue = new BlockingQueue<T>();
     if (!queueMap_.putIfNotExists(name, queue)) {
@@ -46,7 +46,7 @@ void QueueManager<T>::addQueue(std::string name) {
 }
 
 template<typename T>
-void QueueManager<T>::removeQueue(std::string name) {
+void QueueManager<T>::removeQueue(const std::string& name) {
     std::unique_lock<std::mutex> lock(mutex_);
     BlockingQueue<T>* queue = getQueue(name);
     delete queue;
@@ -54,7 +54,7 @@ void QueueManager<T>::removeQueue(std::string name) {
 }
 
 template<typename T>
-BlockingQueue<T>* QueueManager<T>::getQueue(std::string name) {
+BlockingQueue<T>* QueueManager<T>::getQueue(const std::string& name) {
     return queueMap_.get(name);
 }
 template<typename T>
@@ -65,4 +65,4 @@ QueueManager<T>::~QueueManager() {
     queueMap_.clear();
 }
 
-#endif  // COMMON_SRC_QUEUEMANAGER_H_
+#endif  // SERVER_SRC_QUEUEMANAGER_H_
